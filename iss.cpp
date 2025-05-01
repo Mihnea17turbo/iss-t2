@@ -296,6 +296,9 @@ void StatiaSpatialaInternationala::adaugaEchipaj() {
     int idRacheta;
     std::cout << "Introduceti id-ul rachetei la care doriti sa adaugati astronauti: ";
     std::cin >> idRacheta;
+    if (std::cin.fail()) {
+        throw std::runtime_error("Input invalid: trebuie sa introduci un numar intreg.");
+    };
     try{
         acceseazaRacheta(idRacheta);
     } catch (const std::runtime_error& e) {
@@ -336,6 +339,9 @@ void StatiaSpatialaInternationala::puneCombustibilNavei() {
     int idRacheta;
     std::cout << "Introduceti id-ul rachetei la care doriti sa adaugati combustibil: ";
     std::cin >> idRacheta;
+    if (std::cin.fail()) {
+        throw std::runtime_error("Input invalid: trebuie sa introduci un numar intreg.");
+    };
     try{
         acceseazaRacheta(idRacheta);
     } catch (const std::runtime_error& e) {
@@ -349,6 +355,9 @@ void StatiaSpatialaInternationala::puneHranaNavei() {
     int idRacheta;
     std::cout << "Introduceti id-ul rachetei la care doriti sa adaugati hrana: ";
     std::cin >> idRacheta;
+    if (std::cin.fail()) {
+        throw std::runtime_error("Input invalid: trebuie sa introduci un numar intreg.");
+    };
     try{
         acceseazaRacheta(idRacheta);
     } catch (const std::runtime_error& e) {
@@ -363,6 +372,9 @@ void StatiaSpatialaInternationala::afisazaEchipajNava() {
     int idRacheta;
     std::cout << "Introduceti id-ul rachetei a carei echipaj doriti sa-l afisati: ";
     std::cin >> idRacheta;
+    if (std::cin.fail()) {
+        throw std::runtime_error("Input invalid: trebuie sa introduci un numar intreg.");
+    };
     try{
         acceseazaRacheta(idRacheta);
     } catch (const std::runtime_error& e) {
@@ -388,6 +400,9 @@ void StatiaSpatialaInternationala::reparareRacheta() {
     int idRacheta;
     std::cout << "Introduceti id-ul rachetei pe care doriti sa o reparati: ";
     std::cin >> idRacheta;
+    if (std::cin.fail()) {
+        throw std::runtime_error("Input invalid: trebuie sa introduci un numar intreg.");
+    };
     try{
         acceseazaRacheta(idRacheta);
     } catch (const std::runtime_error& e) {
@@ -408,6 +423,9 @@ void StatiaSpatialaInternationala::vindecaPeCelMaiRanit() {
     int idRacheta;
     std::cout << "Introduceti id-ul rachetei de pe care se afla cel pe care freti sa-l vindecati: ";
     std::cin >> idRacheta;
+    if (std::cin.fail()) {
+        throw std::runtime_error("Input invalid: trebuie sa introduci un numar intreg.");
+    };
     try{
         acceseazaRacheta(idRacheta);
     } catch (const std::runtime_error& e) {
