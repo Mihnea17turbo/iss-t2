@@ -62,3 +62,8 @@ Cerințe:
 	 cât mai multe const
 	 funcții de nivel înalt, de eliminat cât mai mulți getters/setters/funcții low-level
 
+Rularea programului.
+
+	Pentru a compila programul este recomandata folosirea comenzii || g++ iss.cpp issmain.cpp -o iss.exe
+	Daca vreti sa primiti datele din imput dintr-un fisier puteti folosi comanda || iss.exe < nume.txt
+	Un fisier exemplu.exe se poate gasi deja in repo,acesta arata dinamismul aplicatiei.De fiecare data cand este rulat are rezultate complet diferite.
