@@ -86,10 +86,10 @@ void Medic::print(std::ostream& os) const {
 void Medic::vindeca(Astronaut& a) {
     if (a.getSanatate() < 50) {
         a.getSanatate() += 20;
-        std::cout << "Medicul: " << getNume() << " a vindecat astronautul: " << a.getNume() << " aflat in stare critica!\n";
+        std::cout << "Medicul " << getNume() << " a vindecat astronautul: " << a.getNume();
     } else if (a.getSanatate() < 90) {
         a.getSanatate() += 10;
-        std::cout << "Medicul: " << getNume() << " a vindecat astronautul: " << a.getNume() << " aflat intr-o stare de sanatate buna!\n";
+        std::cout << "Medicul " << getNume() << " a vindecat astronautul: " << a.getNume();
     } else {
         std::cout << "Astronautul este deja sanatos!\n";
     }
