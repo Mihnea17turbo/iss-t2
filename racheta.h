@@ -56,6 +56,8 @@ public:
     const int getId() const { return id; }
     const Astronaut* acceseazaAstronaut(int id) const;
     friend class StatiaSpatialaInternationala;
+    template <typename T>
+    void afisareEchipajStilizata(T);
 };
 
 class RachetaMica : public Racheta {

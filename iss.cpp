@@ -154,6 +154,22 @@ void Racheta::afisazaEchipaj() const {
     }
 }
 
+template <typename T>
+void Racheta::afisareEchipajStilizata(T x) {
+    for (const auto& astronaut : echipaj) {
+        if constexpr (std::is_same_v<T, int>) {
+            for (int i = 0; i < x; ++i) {
+                std::cout << '\t';
+            }
+        } else if constexpr (std::is_same_v<T, std::string>) {
+            std::cout << x;
+        } else {
+            throw std::invalid_argument("Tip de stilizare invalid!");
+        }
+        std::cout << *astronaut << std::endl;
+    }
+}
+
 void Racheta::manancaHrana() {
     int s = 0;
     for(auto x: echipaj){
@@ -268,9 +284,9 @@ const std::unique_ptr<Racheta>& StatiaSpatialaInternationala::acceseazaRacheta(i
 void StatiaSpatialaInternationala::adaugaNava() {
     std::string nume;
     int tipRacheta;
-    std::cout << "Introduceti numele rachetei: ";
+    // std::cout << "Introduceti numele rachetei: ";
     std::cin >> nume;
-    std::cout << "Introduceti tipul rachetei (1 - Mica, 2 - Medie, 3 - Mare): ";
+    // std::cout << "Introduceti tipul rachetei (1 - Mica, 2 - Medie, 3 - Mare): ";
     std::cin >> tipRacheta;
 
     std::unique_ptr<Racheta> racheta;
@@ -294,7 +310,7 @@ void StatiaSpatialaInternationala::adaugaNava() {
 
 void StatiaSpatialaInternationala::adaugaEchipaj() {
     int idRacheta;
-    std::cout << "Introduceti id-ul rachetei la care doriti sa adaugati astronauti: ";
+    // std::cout << "Introduceti id-ul rachetei la care doriti sa adaugati astronauti: ";
     std::cin >> idRacheta;
     if (std::cin.fail()) {
         throw std::runtime_error("Input invalid: trebuie sa introduci un numar intreg.");
@@ -309,25 +325,25 @@ void StatiaSpatialaInternationala::adaugaEchipaj() {
     std::string nume, prenume, specializare;
     int varsta, salariu, mancarePeZi, experienta;
 
-    std::cout << "Introduceti numele astronautului: ";
+    // std::cout << "Introduceti numele astronautului: ";
     std::cin >> nume;
-    std::cout << "Introduceti prenumele astronautului: ";
+    // std::cout << "Introduceti prenumele astronautului: ";
     std::cin >> prenume;
-    std::cout << "Introduceti varsta astronautului: ";
+    // std::cout << "Introduceti varsta astronautului: ";
     std::cin >> varsta;
-    std::cout << "Introduceti salariul astronautului: ";
+    // std::cout << "Introduceti salariul astronautului: ";
     std::cin >> salariu;
-    std::cout << "Introduceti cat mananca astronautul intr-o zi: ";
+    // std::cout << "Introduceti cat mananca astronautul intr-o zi: ";
     std::cin >> mancarePeZi;
-    std::cout << "Introduceti specializarea astronautului (Medic/Inginer - orice altceva va crea un astronaut generic): ";
+    // std::cout << "Introduceti specializarea astronautului (Medic/Inginer - orice altceva va crea un astronaut generic): ";
     std::cin >> specializare;
 
     if (specializare == "Medic") {
-        std::cout << "Introduceti experienta medicului (ani): ";
+        // std::cout << "Introduceti experienta medicului (ani): ";
         std::cin >> experienta;
         racheta->adaugaAstronaut(new Medic(nume, prenume, varsta, salariu, mancarePeZi, specializare, experienta));
     } else if (specializare == "Inginer") {
-        std::cout << "Introduceti experienta inginerului (ani): ";
+        // std::cout << "Introduceti experienta inginerului (ani): ";
         std::cin >> experienta;
         racheta->adaugaAstronaut(new Inginer(nume, prenume, varsta, salariu, mancarePeZi, specializare, experienta));
     } else {
@@ -337,7 +353,7 @@ void StatiaSpatialaInternationala::adaugaEchipaj() {
 
 void StatiaSpatialaInternationala::puneCombustibilNavei() {
     int idRacheta;
-    std::cout << "Introduceti id-ul rachetei la care doriti sa adaugati combustibil: ";
+    // std::cout << "Introduceti id-ul rachetei la care doriti sa adaugati combustibil: ";
     std::cin >> idRacheta;
     if (std::cin.fail()) {
         throw std::runtime_error("Input invalid: trebuie sa introduci un numar intreg.");
@@ -353,7 +369,7 @@ void StatiaSpatialaInternationala::puneCombustibilNavei() {
 }
 void StatiaSpatialaInternationala::puneHranaNavei() {
     int idRacheta;
-    std::cout << "Introduceti id-ul rachetei la care doriti sa adaugati hrana: ";
+    // std::cout << "Introduceti id-ul rachetei la care doriti sa adaugati hrana: ";
     std::cin >> idRacheta;
     if (std::cin.fail()) {
         throw std::runtime_error("Input invalid: trebuie sa introduci un numar intreg.");
@@ -370,7 +386,7 @@ void StatiaSpatialaInternationala::puneHranaNavei() {
 
 void StatiaSpatialaInternationala::afisazaEchipajNava() {
     int idRacheta;
-    std::cout << "Introduceti id-ul rachetei a carei echipaj doriti sa-l afisati: ";
+    // std::cout << "Introduceti id-ul rachetei a carei echipaj doriti sa-l afisati: ";
     std::cin >> idRacheta;
     if (std::cin.fail()) {
         throw std::runtime_error("Input invalid: trebuie sa introduci un numar intreg.");
@@ -398,7 +414,7 @@ void StatiaSpatialaInternationala::adaugaRacheta(std::unique_ptr<Racheta> rachet
 
 void StatiaSpatialaInternationala::reparareRacheta() {
     int idRacheta;
-    std::cout << "Introduceti id-ul rachetei pe care doriti sa o reparati: ";
+    // std::cout << "Introduceti id-ul rachetei pe care doriti sa o reparati: ";
     std::cin >> idRacheta;
     if (std::cin.fail()) {
         throw std::runtime_error("Input invalid: trebuie sa introduci un numar intreg.");
@@ -421,7 +437,7 @@ void StatiaSpatialaInternationala::reparareRacheta() {
 
 void StatiaSpatialaInternationala::vindecaPeCelMaiRanit() {
     int idRacheta;
-    std::cout << "Introduceti id-ul rachetei de pe care se afla cel pe care freti sa-l vindecati: ";
+    // std::cout << "Introduceti id-ul rachetei de pe care se afla cel pe care freti sa-l vindecati: ";
     std::cin >> idRacheta;
     if (std::cin.fail()) {
         throw std::runtime_error("Input invalid: trebuie sa introduci un numar intreg.");
@@ -449,5 +465,13 @@ void StatiaSpatialaInternationala::vindecaPeCelMaiRanit() {
         std::cout << "Nu exista medic in echipaj!\n";
     } else {
         std::cout << "Nu exista astronauti in echipaj!\n";
+    }
+}
+
+void StatiaSpatialaInternationala::printFinal() {
+    for (const auto& racheta : rachete) {
+        std::cout << *racheta << std::endl;
+        std::cout << "\tEchipaj:\n";
+        racheta->afisareEchipajStilizata(2);
     }
 }

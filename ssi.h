@@ -20,4 +20,5 @@ public:
     void afisazaEchipajNava();
     void reparareRacheta();
     void vindecaPeCelMaiRanit();
+    void printFinal();
 };
