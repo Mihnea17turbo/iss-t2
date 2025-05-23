@@ -11,24 +11,28 @@ Funcționarea principală – main()
 
  - Inițializează un obiect ssi de tip StatiaSpatialaInternationala.
 
- - Afișează un meniu interactiv cu 10 opțiuni.
+ - Utilizatorul poate alege una din cele 10 optiuni
 
  - Primește de la utilizator un număr (optiune) și execută funcția corespunzătoare.
 
- - Meniul continuă să ruleze până când utilizatorul selectează opțiunea 10 (ieșire) sau pana pune un input invalid.
+ - Meniul continuă să ruleze până când utilizatorul selectează opțiunea 10 (ieșire), pana a citit toate instructiunile sau pana pune un input invalid.
+
+ - Rezultatul va fi afisat in 2 parti:
+	- 1. Afisarea jurnalului de bord - raspunsul la actiunea selectata de utilizator
+   	- 2. Afisarea sfarsitului de misiune - starea finala cu toate navele care nu au fost distruse si cu toti astronautii ramasi pe acestea.  
 
  Functiile apelate:
  
-    - adaugaNava() - adaugă o rachetă nouă în stația spațială internațională. Utilizatorul va introduce numele rachetei și tipul acesteia (mică, medie sau mare).
-    - adaugaEchipaj() - adaugă astronauți la o rachetă existentă. Utilizatorul va introduce id-ul rachetei și detaliile astronautului (nume, prenume, varsta, salariu, mancarePeZi,specializare).
-    - afisazaRachete() - afișează toate rachetele existente în stația spațială internațională.
-    - afisazaEchipajNava() - afișează echipajul unei rachete existente. Utilizatorul va introduce id-ul rachetei.
-    - puneHranaNavei() - adaugă hrană la o rachetă existentă. Utilizatorul va introduce id-ul rachetei.
-    - puneCombustibilNavei() - adaugă combustibil la o rachetă existentă. Utilizatorul va introduce id-ul rachetei.
-    - reparareRacheta() - repară o rachetă existentă daca exista un inginer pe nava. Utilizatorul va introduce id-ul rachetei.
-    - vindecaPeCelMaiRanit() - vindecă astronautul cel mai rănit dintr-o rachetă existentă daca exista un medic pe nava. Utilizatorul va introduce id-ul rachetei.
-    - trecereZi() - simulează trecerea unei zile pentru toate rachetele existente. Aceasta va consuma combustibilul și hrana, va verifica starea de sănătate a astronauților și va gestiona evenimentele (ex: asteroizi).
-    - iesire() - iese din program.
+    - 1)adaugaNava() - adaugă o rachetă nouă în stația spațială internațională. Utilizatorul va introduce numele rachetei și tipul acesteia (mică, medie sau mare folosind 1 pt mica,2 pt medie, 3 pt mare).
+    - 2)adaugaEchipaj() - adaugă astronauți la o rachetă existentă. Utilizatorul va introduce id-ul rachetei și detaliile astronautului (nume, prenume, varsta, salariu, mancarePeZi,specializare(Medic/Inginer)).
+    - 3)afisazaRachete() - afișează toate rachetele existente în stația spațială internațională.
+    - 4)afisazaEchipajNava() - afișează echipajul unei rachete existente. Utilizatorul va introduce id-ul rachetei.
+    - 5)puneHranaNavei() - adaugă hrană la o rachetă existentă. Utilizatorul va introduce id-ul rachetei.
+    - 6)puneCombustibilNavei() - adaugă combustibil la o rachetă existentă. Utilizatorul va introduce id-ul rachetei.
+    - 7)reparareRacheta() - repară o rachetă existentă daca exista un inginer pe nava. Utilizatorul va introduce id-ul rachetei.
+    - 8)vindecaPeCelMaiRanit() - vindecă astronautul cel mai rănit dintr-o rachetă existentă daca exista un medic pe nava. Utilizatorul va introduce id-ul rachetei.
+    - 9)trecereZi() - simulează trecerea unei zile pentru toate rachetele existente. Aceasta va consuma combustibilul și hrana, va verifica starea de sănătate a astronauților și va gestiona evenimentele (ex: asteroizi).
+    - 10)iesire() - iese din program.
 
 
 Cerințe:
@@ -64,6 +68,4 @@ Cerințe:
 
 Rularea programului.
 
-	Pentru a compila programul este recomandata folosirea comenzii || g++ iss.cpp issmain.cpp -o iss.exe
-	Daca vreti sa primiti datele din imput dintr-un fisier puteti folosi comanda || iss.exe < nume.txt
-	Un fisier exemplu.exe se poate gasi deja in repo,acesta arata dinamismul aplicatiei.De fiecare data cand este rulat are rezultate complet diferite.
+	Se vor pune datele misiunii intr-un fisier text numit input.txt si se vor apela functiile folosind numarul acestora.
