@@ -34,7 +34,8 @@ Funcționarea principală – main()
 
 
 int main() {
-    StatiaSpatialaInternationala ssi;
+    // StatiaSpatialaInternationala ssi;
+    StatiaSpatialaInternationala& ssi = *StatiaSpatialaInternationala::getInstance();
     std::ifstream fin("input.txt");
     if (!fin) {
         std::cerr << "Eroare la deschiderea fisierului input.txt" << std::endl;

@@ -7,8 +7,18 @@
 class StatiaSpatialaInternationala {
 private:
     std::vector<std::unique_ptr<Racheta>> rachete;
+    StatiaSpatialaInternationala() {}
+    StatiaSpatialaInternationala(const StatiaSpatialaInternationala&) = delete;
+    StatiaSpatialaInternationala& operator=(const StatiaSpatialaInternationala&) = delete;
+    static StatiaSpatialaInternationala* instance;
 
 public:
+    static StatiaSpatialaInternationala* getInstance() {
+    if (instance == nullptr) {
+        instance = new StatiaSpatialaInternationala();
+    }
+    return instance;
+}
     void adaugaRacheta(std::unique_ptr<Racheta> racheta);
     void afisazaRachete() const;
     void trecereZi();
@@ -22,3 +32,4 @@ public:
     void vindecaPeCelMaiRanit();
     void printFinal();
 };
+

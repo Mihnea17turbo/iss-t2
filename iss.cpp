@@ -10,7 +10,20 @@ std::uniform_int_distribution<> distrib(1, 6);
 
 
 //functii
-std::string ViataRachetaToString(ViataRacheta v) {
+template <typename T>
+std::string ViataRachetaToString(T v) {
+    if constexpr (std::is_same_v<T,int>){
+        switch (v) {
+            case 0: return "DISTRUSA";
+            case 1: return "VIATA CRITICAL DE MICA";
+            case 2: return "VIATA MICA";
+            case 3: return "VIATA BUNA";
+            case 4: return "ARMURA";
+            case 5: return "ARMURA BUNA";
+            default: return "Valoare incorecta";
+        }
+    }
+
     switch (v) {
         case DISTRUSA: return "DISTRUSA";
         case VIATA_CRITICAL_DE_MICA: return "VIATA CRITICAL DE MICA";
@@ -176,14 +189,15 @@ void Racheta::manancaHrana() {
         s+= x->getMancarePeZi();
     }
     hrana -= s;
-    if (hrana < s) std::cout<< "Nu o sa mai ajunga hrana pentru o noua zi!\n";
+    if (hrana <= 0) std::cout << "Racheta a ramas fara hrana!\n";
+    else if (hrana < s) std::cout<< "Nu o sa mai ajunga hrana pentru o noua zi!\n";
     else std::cout << "Hrana a fost consumata. Hrana ramasa: " << hrana << "\n";
 
 }
 
 void Racheta::consumCombustibil() {
     combustibil -= 10;
-    if (combustibil < 0) std::cout << "Racheta a ramas fara combustibil si pluteste in spatiu!\n";
+    if (combustibil <= 0) std::cout << "Racheta a ramas fara combustibil si pluteste in spatiu!\n";
     else std::cout << "Racheta a consumat combustibil. Combustibil ramas: " << combustibil << "\n";
 }
 
@@ -198,8 +212,8 @@ void Racheta::sfarsitZiPentruNava() {
     echipaj.erase(std::remove_if(echipaj.begin(), echipaj.end(), [](Astronaut* a) { return a->getSanatate() <= 0; }), echipaj.end());
     manancaHrana();
     consumCombustibil();
-    if (hrana < 0 or combustibil < 0 or echipaj.size() == 0){
-        std::cout << "Racheta a ramas fara resurse!\n";
+    if (hrana <= 0 or combustibil <= 0 or echipaj.size() == 0){
+        // std::cout << "Racheta a ramas fara resurse!\n";
         viata = DISTRUSA;
     }else{
         asteroizi();
@@ -260,6 +274,7 @@ std::unique_ptr<Racheta> RachetaMare::clone() const {
 
 
 // StatiaSpatialaInternationala
+
 
 void StatiaSpatialaInternationala::trecereZi() {
     for (auto& racheta : rachete) {
@@ -475,3 +490,5 @@ void StatiaSpatialaInternationala::printFinal() {
         racheta->afisareEchipajStilizata(2);
     }
 }
+
+StatiaSpatialaInternationala* StatiaSpatialaInternationala::instance = nullptr;
